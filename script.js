@@ -129,7 +129,7 @@ async function initializeTesseract() {
     ocrStatus.textContent = 'OCRワーカーを初期化中...';
     try {
         worker = Tesseract.createWorker({
-            // langPath: './lib/lang-data/', // 言語データのパスを指定 (CDN利用の場合は不要)
+            langPath: './lib/lang-data/', // 言語データのパスを指定 (CDN利用の場合は不要)
             logger: m => {
                 // OCRの進捗を表示 (m.status, m.progress)
                 if (m.status === 'recognizing text') {
