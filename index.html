@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>名刺管理アプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>名刺管理アプリ</h1>
+
+        <!-- 名刺リスト表示画面 -->
+        <section id="card-list-section" class="active">
+            <input type="text" id="search-input" placeholder="検索キーワードを入力">
+            <ul id="card-list">
+                <!-- 名刺データがここに表示されます -->
+            </ul>
+            <button id="add-card-button">新しい名刺を追加</button>
+        </section>
+
+        <!-- カメラ撮影画面 -->
+        <section id="camera-section" class="hidden">
+            <h2>名刺を撮影</h2>
+            <video id="video-stream" autoplay playsinline></video>
+            <button id="capture-button">撮影</button>
+            <button id="camera-back-button">戻る</button>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <div id="ocr-status" style="margin-top: 10px;"></div>
+        </section>
+
+        <!-- OCR結果・編集画面 -->
+        <section id="edit-section" class="hidden">
+            <h2>名刺データ編集</h2>
+            <form id="card-form">
+                <label for="edit-name">氏名:</label>
+                <input type="text" id="edit-name" required><br>
+
+                <label for="edit-company">会社名:</label>
+                <input type="text" id="edit-company"><br>
+
+                <label for="edit-title">役職:</label>
+                <input type="text" id="edit-title"><br>
+
+                <label for="edit-phone">電話番号:</label>
+                <input type="text" id="edit-phone"><br>
+
+                <label for="edit-email">メールアドレス:</label>
+                <input type="email" id="edit-email"><br>
+
+                <label for="edit-address">住所:</label>
+                <input type="text" id="edit-address"><br>
+
+                <label for="edit-full-text">OCR生テキスト (参考):</label>
+                <textarea id="edit-full-text" rows="5" readonly></textarea><br>
+
+                <button type="submit" id="save-card-button">保存</button>
+                <button type="button" id="delete-card-button" class="hidden">削除</button>
+                <button type="button" id="edit-back-button">キャンセル</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Tesseract.jsをCDNまたはローカルから読み込む -->
+    <script src="lib/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
